@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShowBisaoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Perguntas">
+    <Key>
+      <PropertyRef Name="IdPergunta" />
+      <PropertyRef Name="Rodada" />
+    </Key>
+    <Property Name="IdPergunta" Type="int" Nullable="false" />
+    <Property Name="Rodada" Type="int" Nullable="false" />
+    <Property Name="Pergunta" Type="varchar(max)" />
+    <Property Name="Premio" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Respostas">
+    <Key>
+      <PropertyRef Name="IdAlternativa" />
+    </Key>
+    <Property Name="IdAlternativa" Type="int" Nullable="false" />
+    <Property Name="Rodada" Type="int" Nullable="false" />
+    <Property Name="Alternativa" Type="varchar(max)" />
+    <Property Name="EhCorreta" Type="bit" />
+    <Property Name="IdPergunta" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Respostas_Pergunta">
+    <End Role="Perguntas" Type="Self.Perguntas" Multiplicity="1" />
+    <End Role="Respostas" Type="Self.Respostas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perguntas">
+        <PropertyRef Name="IdPergunta" />
+        <PropertyRef Name="Rodada" />
+      </Principal>
+      <Dependent Role="Respostas">
+        <PropertyRef Name="IdPergunta" />
+        <PropertyRef Name="Rodada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShowBisaoModelStoreContainer">
+    <EntitySet Name="Perguntas" EntityType="Self.Perguntas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Respostas" EntityType="Self.Respostas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Respostas_Pergunta" Association="Self.FK_Respostas_Pergunta">
+      <End Role="Perguntas" EntitySet="Perguntas" />
+      <End Role="Respostas" EntitySet="Respostas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

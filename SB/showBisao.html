@@ -1,0 +1,698 @@
+<html>
+    <head>
+         <meta charset="UTF-8">
+        <style>
+            body{
+                background: #475aed !important;
+                overflow-y: hidden;
+            }
+            .bb{
+                border: 2px solid white;
+            }
+
+            .pergunta{
+                position:relative;
+                left:-1200px;
+                height: 25%;
+                border-radius: 5px 20px 20px 5px;
+                border: solid 4px white;
+                width: 70%;
+                float: letf;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3019+0,9b0803+100 */
+                background: #ff3019; /* Old browsers */
+                background: -moz-radial-gradient(center, ellipse cover, #ff3019 0%, #9b0803 100%); /* FF3.6-15 */
+                background: -webkit-radial-gradient(center, ellipse cover, #ff3019 0%,#9b0803 100%); /* Chrome10-25,Safari5.1-6 */
+                background: radial-gradient(ellipse at center, #ff3019 0%,#9b0803 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#9b0803',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+                padding-left: 15px;
+                padding-top: -5x;
+                color: white;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 2.5vh;
+                font-size: 2.5vw;
+            }
+
+            p{
+                margin-top: 10px;
+            }
+
+            .txtResposta{
+                position: relative;
+                width: 82%;
+                color: white;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 2.5vh;
+                font-size: 2.5vw;
+                float: left;
+                margin: 20px 5px 5px 12px;
+                word-wrap: break-word;
+                word-break: break-all;
+            }
+
+            .board{
+                height: 75%;
+            }
+
+            .alternativas{
+                height: 100%; 
+                width: 60%; 
+                position: relative;
+                float: left;
+            }
+
+            .ajuda{
+                height: 100%;
+                float: left;
+                width: 39%;
+            }
+
+            .cartas{
+                background-image: url("images/cartas.png");
+                background-size: 100% 100%;
+            }
+
+            .cartas_usado{
+                background-image: url("images/cartas_usado.png");
+                background-size: 100% 100%;
+            }
+
+
+            .placas{
+                background-image: url("images/placas.png");
+                background-size: 100% 100%;
+            }
+
+            .placas_usado{
+                background-image: url("images/placas_usado.png");
+                background-size: 100% 100%;
+            }
+
+            .convidados{
+                background-image: url("images/convidados.png");
+                background-size: 100% 100%;
+            }
+
+            .convidados_usado{
+                background-image: url("images/convidados_usado.png");
+                background-size: 100% 100%;
+            }
+
+            .pulo-1{
+                background-image: url("images/pulo-1.png");
+                background-size: 100% 100%;
+            }
+
+            
+            .pulo-1_usado{
+                background-image: url("images/pulo-1_usado.png");
+                background-size: 100% 100%;
+            }
+
+            .pulo-2{
+                background-image: url("images/pulo-2.png");
+                background-size: 100% 100%;
+            }
+
+            
+            .pulo-2_usado{
+                background-image: url("images/pulo-2_usado.png");
+                background-size: 100% 100%;
+            }
+
+            .pulo-3{
+                background-image: url("images/pulo-3.png");
+                background-size: 100% 100%;
+            }
+
+            
+            .pulo-3_usado{
+                background-image: url("images/pulo-1_usado.png");
+                background-size: 100% 100%;
+            }
+
+            .alt{
+                height: 20%;
+                margin-top: 15px;
+                width: 97%;
+                border-radius: 0 20px 20px 0;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3019+0,9b0803+100 */
+                background: #ff3019; /* Old browsers */
+                background: -moz-linear-gradient(top, #ff3019 0%, #9b0803 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, #ff3019 0%,#9b0803 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, #ff3019 0%,#9b0803 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#9b0803',GradientType=0 ); /* IE6-9 */
+            }
+
+            .alt_escolhida{
+                height: 20%;
+                margin-top: 17px;
+                width: 97%;
+                border-radius: 0 20px 20px 0;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#148c0e+0,04d80e+100 */
+                background: #148c0e; /* Old browsers */
+                background: -moz-linear-gradient(top,  #148c0e 0%, #04d80e 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(top,  #148c0e 0%,#04d80e 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom,  #148c0e 0%,#04d80e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#148c0e', endColorstr='#04d80e',GradientType=0 ); /* IE6-9 */
+
+            }
+
+            .resposta-correta{
+                 height: 20%;
+                margin-top: 17px;
+                width: 97%;
+                border-radius: 0 20px 20px 0;
+                /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a4e550+0,e6ea04+100 */
+                background: #a4e550; /* Old browsers */
+                background: -moz-linear-gradient(45deg, #a4e550 0%, #e6ea04 100%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(45deg, #a4e550 0%,#e6ea04 100%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(45deg, #a4e550 0%,#e6ea04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4e550', endColorstr='#e6ea04',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+            }
+
+            .ajudas{
+                height: 73%;
+                
+            }
+
+            .conseqs{
+                height: 31%;
+                padding-left: 7px;
+                position: relative;
+                top: -44px;
+            }   
+
+            .cons{
+                height: 98%;
+                width: 32%;
+                float: left;
+                margin-right: 5px;
+                padding-top: 3px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .cons h3{
+                color: white;
+                position: relative;
+                top: -25px;
+                font-weight: bold;
+                margin-left: 27px;
+            }
+
+            .res{
+                float: left;
+                left: 14px;
+                width: 30%;
+                height: 39%;
+                margin-top: 15px;
+                margin-left: 5px;
+                position: relative;
+            }
+
+            .number{
+                float: left;
+                width: 11%;
+                height: 90%;
+                border-radius: 70px;
+                background: linen;
+            }
+            
+            .alt{
+                position:relative;
+                left:-900px;
+            }
+            
+            .alt1{
+                background-image: url("images/1.png");
+                background-size: 100% 100%;
+            }
+
+            .alt2{
+                background-image: url("images/2.png");
+                background-size: 100% 100%;
+            }
+
+            .alt3{
+                background-image: url("images/3.png");
+                background-size: 100% 100%;
+            }
+
+            .alt4{
+                background-image: url("images/4.png");
+                background-size: 100% 100%;
+            }
+
+            .alt > .number > h1{
+                font-size: 49px;
+                margin-left: 15px;
+            }
+            .logo-container{
+               display: flex;
+                
+            }
+            .logo{
+               flex-grow: 1;
+               background-image: url("images/sbLogo.png");
+               background-size: 100% 112%;
+              
+            }
+
+            .modal-resp-errada{
+                background-color: red;
+            }
+            .modal-resp-certa{
+                background-color: green;
+            }
+            .q-sel{
+                display: none;
+            }
+
+            .cp1 {
+                height: 100px;
+                flex-grow: 1;
+                top: 88px;
+            }
+            .cp2 {
+                height: 133px;
+                width: 110px;
+                background-image: url(images/bis.png);
+                background-size: 100% 100%;
+            }
+
+            .txtConseq{
+                flex-grow: 1;                
+                height:35px;
+                width: 100%;
+            }
+
+            .premio{
+                margin-left: 2px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 2.9em;
+                color: white;
+            }
+
+            .premioMeio{
+                margin-left: 5px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 3em;
+                color: white;
+            }
+
+            .x{
+                margin-left: 4px;
+                margin-right: -9px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 2em;
+                color: white;
+            }
+
+            .xMeio{
+                margin-left: 1px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 1em;
+                color: white;
+            }
+
+            .errar{
+                background-image: url(images/errar.png);
+                background-size: 100% 100%; 
+            }
+
+            .parar{
+                background-image: url(images/parar.png);
+                background-size: 100% 100%; 
+            }
+
+            .acertar{
+                background-image: url(images/acertar.png);
+                background-size: 100% 100%; 
+            }
+
+            .figPerdeTudo{
+                background-image: url(images/perde-tudo.png);
+                background-size: 100% 100%;
+                border: 1px solid #475aed;
+            }
+            .figBisao{
+                background-image: url(images/bisao.png);
+                background-size: 100% 100%;
+                border: 1px solid #475aed;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+        <script>
+            var idRodada = 1;
+            var idPergunta = 0;
+            var ehPulo = false;
+            var idPerguntaPulo = 16;
+            var numAlternativa = 1;
+            var numCartaSelecionada = 0;
+
+            function setUsed(classe){            
+                $("."+classe).removeClass(classe).addClass(classe+"_usado");
+                if (classe == "pulo-1"){
+                    ehPulo = true;
+                    idPerguntaPulo = 16;
+                }
+                if (classe == "pulo-2"){
+                    ehPulo = true;
+                    idPerguntaPulo = 17;
+                }
+                if (classe == "pulo-3"){
+                    ehPulo = true;
+                    idPerguntaPulo = 18;
+                }
+            }
+
+            var setChosen = function(classe){
+                $("."+classe).click(function(){
+                    removeChosen();
+                    $(this).removeClass("alt").addClass("alt_escolhida"); 
+                });
+            }
+
+            var removeChosen = function(){
+                    $(".alternativas").children().each(function(){
+                        
+                        if ($(this).hasClass("alt_escolhida")){
+                            $(this).removeClass("alt_escolhida").addClass("alt");
+                        }
+
+                        if($(this).hasClass("resposta-correta")){
+                            $(this).removeClass("resposta-correta").addClass("alt");
+                        }
+                    });
+                }
+
+            var mostrarReposta = function(){
+                var escolheuCorreta = $(".alternativas div[data-iscorrect = 'true']").hasClass("alt_escolhida");
+                if (escolheuCorreta){
+                    $(".alternativas div[data-iscorrect = 'true']").removeClass("alt_escolhida");
+                    $(".alternativas div[data-iscorrect = 'true']").addClass("resposta-correta");
+                }else{
+                    $(".alternativas div[data-iscorrect = 'true']").addClass("resposta-correta");
+                }         
+               
+                
+            }    
+
+            var clearModalClasses = function(){
+                $(".modal-body").removeClass("modal-resp-certa");
+                $(".modal-body").removeClass("modal-resp-errada");
+            }
+
+            var perguntar = function(){
+                
+                $(".alternativas").children().each(function(){
+                    if ($(this).hasClass("alt_escolhida")){
+                        if($(this).attr("data-iscorrect") == "true"){
+                            var audio = $("#certa-resposta")[0];
+                            audio.play();
+                            setTimeout(function(){/* Look mah! No name! */
+                                clearModalClasses();
+                                $(".modal-body").addClass("modal-resp-certa").html("<h2 style='text-align:center; color:white;'>Certa resposta!</h2>")
+                                $( "#btnPerguntar" ).trigger( "click" );
+                                mostrarReposta();
+                                if(idPergunta == 15){
+                                    var audio = $("#abertura")[0];
+                                    audio.play();
+                                }
+                            },2300);                    
+                            
+                        }else{   
+                            var audio = $("#que-pena")[0];
+                            audio.play();
+                            setTimeout(function(){         
+                                clearModalClasses();           
+                                $(".modal-body").addClass("modal-resp-errada").html("<h2 style='text-align:center; color:white;'>Que pena.. você errou!</h2>");
+                                $( "#btnPerguntar" ).trigger( "click" );
+                                mostrarReposta();
+                            },200);
+                        }
+                        
+                    }
+                });
+            }
+
+            var getQuestion = function(){
+                if (idPergunta == 0){idPergunta = 1;}   
+                numAlternativa = 1;
+                var idPerguntaAtual = idPergunta;
+                if (ehPulo){
+                    idPerguntaAtual = idPerguntaPulo;
+                }
+                var url = "http://localhost:59871/api/Perguntas/" + idPerguntaAtual +"?idRodada=" + idRodada;
+                jQuery.getJSON(url, function( data ) {
+                $( "p" ).remove();
+                $(".pergunta").html("<p>" + data.Pergunta + "</p>");
+                var i = 0;
+                 
+                if (data.Premio != "0"){
+                    var arrayPremios = data.Premio.split(",");
+                    
+                     $(".premio1").text(arrayPremios[0]);
+                    
+                    $(".premio2").text(arrayPremios[1]);
+                    
+                    $(".premio3").text(arrayPremios[2]);
+
+                    if (arrayPremios[0] == "Perde Tudo"){
+                        $(".cons1 div").remove(".cp2");
+                        $(".cons1 .cp1").empty();
+                        $(".cons1 .cp1").addClass("figPerdeTudo");
+
+                        $(".cons3 div").remove(".cp2");
+                        $(".cons3 .cp1").empty();
+                        $(".cons3 .cp1").addClass("figBisao");
+                    }
+
+                   
+
+                } 
+                
+                $(".alternativas").children().each(function(){
+                    if($(this).hasClass("alt")){
+                        $(this).append("<p class='txtResposta'>" + data.Respostas[i].Alternativa + "</p>");
+                        $(this).attr("data-iscorrect", data.Respostas[i].EhCorreta); 
+                    }
+                    
+                    i++;
+                 });
+                // var items = [];
+                // $.each( data.Respostas, function( resp ) {
+                //     items.push( "<li id='" + resp.Alternativa + "'>" );
+                //     console.log(items);    
+                // });
+                ehPulo = false;
+                //verifPremioTextSize(); 
+                console.log(data);});
+                $(".pergunta").animate({
+                    left: '0px'
+                });
+            }
+
+            var proximaPergunta = function(){
+                removeChosen();
+                $('.alt').removeAttr('style');
+                $('.pergunta').removeAttr('style');
+                var audio = $("#q-sel")[0];
+                audio.play();
+                if (!ehPulo)
+                {
+                   idPergunta++;    
+                }
+
+                removeChosen();
+                getQuestion();
+                
+            }
+
+            var nextChoice = function(){                
+                $(".alt:nth-child("+numAlternativa+")").animate({
+                    left: '0px'
+                });
+            }
+
+            var verifPremioTextSize = function(){
+                if($(".premio2").text() == "1/2"){
+                    $(".premio2").removeClass("premio").addClass("premioMeio");
+                    $(".meio").removeClass("x").addClass("xMeio");
+                }
+            }
+
+            var esconderAlternativas = function(numeroCarta){
+                setUsed("cartas");
+                 var indexCartas = 1;
+                 if (numCartaSelecionada > 0){
+                    $(".alternativas").children().each(function(){
+                        if ($(this).hasClass("alt") && indexCartas <= numCartaSelecionada){
+                            if($(this).attr("data-iscorrect") == "false"){
+                                $(this).attr("style","display:hidden");
+                                indexCartas++;
+                            }
+                            
+                        }
+                        
+                    });
+                 }                
+            }
+
+            $(function(){   
+                             
+                getQuestion();
+                var audio = $("#q-sel")[0];
+                audio.play();
+               
+                $( "#setround" ).button().on( "click", function() {
+                    idRodada = prompt("Numero da rodada", "");
+                    console.log(idRodada);
+                    idPergunta = 0;
+                }); 
+
+                $( ".btnCartas" ).click(function() {
+                    numCartaSelecionada = prompt("Numero da Carta", "");
+                    console.log(numCartaSelecionada);
+                   
+                    esconderAlternativas(numCartaSelecionada);
+
+                });        
+
+                $(document).on("keydown", function (e) {
+                     // ">" proxima pergunta
+                    if(e.which == 39){
+                        
+                        proximaPergunta();
+                    }
+                     // "p" perguntar
+                    if(e.which == 80){
+                        
+                        perguntar();
+                    }
+                     // "s" iniciar suspense
+                    if(e.which == 83){
+                        var audio = $("#suspense")[0];
+                        audio.play();
+                    }
+                     //"x" parar suspense
+                    if(e.which == 88){
+                        var audio = $("#suspense")[0];
+                        audio.pause();
+                        audio.currentTime = 0;
+                     // "espaco" animar alternativa   
+                    }if(e.which == 32){
+                        nextChoice();
+                        numAlternativa++;
+                        if(numAlternativa == 5){
+                            numAlternativa = 1;
+                        }
+                     //"r" configurar rodada   
+                    }if(e.which == 82){
+                        $(".btnRodada").trigger("click");
+                     //"c" configurar cartas
+                    }if(e.which == 67){
+                        $(".btnCartas").trigger("click");
+                    }
+                    // use e.which
+                }) 
+
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="logo-container">
+            <div class="bb pergunta">
+                
+            </div>
+            <div class="logo">
+
+            </div>
+        </div>
+        <div class="board">
+            <div class="alternativas">
+                <div data-iscorrect="0" onclick="setChosen('alt-1')" class="bb alt alt-1">
+                    <div class="bb number alt1"></div>
+                       
+                </div>
+                <div data-iscorrect="0" onclick="setChosen('alt-2')" class="bb alt alt-2">
+                    <div class="bb number alt2"></div>
+                     
+                </div>
+                <div data-iscorrect="0" onclick="setChosen('alt-3')" class="bb alt alt-3">
+                    <div class="bb number alt3"></div>
+                     
+                </div>
+                <div data-iscorrect="0" onclick="setChosen('alt-4')" class="bb alt alt-4">
+                    <div class="bb number alt4"></div>
+                     
+                </div>
+                <input type="button" class="btnRodada" style="display: none;" id="setround" value="Config Rodada">
+                <input type="button" class="btnCartas" style="display: none;" value="Cartas">
+                <button type="button" style="display: none" id="btnPerguntar" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+            </div>
+            <div class="ajuda">
+                <diV class="ajudas">
+                    <div class="res cartas"></div>
+                    <div onclick='setUsed("placas")' class="res placas"></div>
+                    <div onclick='setUsed("convidados")'class="res convidados"></div>
+                    <div onclick='setUsed("pulo-1")' class="res pulo-1"></div>
+                    <div onclick='setUsed("pulo-2")' class="res pulo-2"></div>
+                    <div onclick='setUsed("pulo-3")' class="res pulo-3"></div>
+                </diV>
+                <div class="conseqs">
+                    <div class="cons cons1">
+                        <div class="txtConseq errar"></div>
+                        <div class="cp1"><span class="premio premio1"></span><span class="x">x</span></div>
+                        <div class="cp2"></div>
+                    </div>
+                    
+                    <div class="cons">
+                        <div class="txtConseq parar"></div>
+                        <div class="cp1"><span class="premio premio2"></span><span class="meio x">x</span></div>
+                        <div class="cp2"></div>
+                    </div>
+                    <div class="cons cons3">
+                        <div class="txtConseq acertar"></div>
+                        <div class="cp1"><span class="premio premio3"></span><span class="x">x</span></div>
+                        <div class="cp2"></div>   
+                    </div>                     
+                </div>
+               
+            </div>
+            
+        </div>
+         <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <!--<h4 class="modal-title">Modal Header</h4>-->
+                </div>
+                <div class="modal-body">          
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+            </div>    
+        </div>
+    
+      <audio id="q-sel" src="audios/question-select.mp3" type="audio/mp3"></audio>                
+      <audio loop id="suspense" src="audios/suspense.mp3" type="audio/mp3"></audio>
+      <audio id="certa-resposta" src="audios/certa-resposta2.mp3" type="audio/mp3"></audio>
+      <audio id="que-pena" src="audios/que-pena.mp3" type="audio/mp3"></audio>
+      <audio loop id="abertura" src="audios/abertura-show-do-milhao.mp3" type="audio/mp3"></audio>
+      
+    </body>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>

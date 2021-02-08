@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShowBisaoModelStoreContainer" CdmEntityContainer="ShowBisaoEntities">
+    <EntitySetMapping Name="Perguntas">
+      <EntityTypeMapping TypeName="ShowBisaoModel.Pergunta">
+        <MappingFragment StoreEntitySet="Perguntas">
+          <ScalarProperty Name="IdPergunta" ColumnName="IdPergunta" />
+          <ScalarProperty Name="Rodada" ColumnName="Rodada" />
+          <ScalarProperty Name="Pergunta1" ColumnName="Pergunta" />
+          <ScalarProperty Name="Premio" ColumnName="Premio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Respostas">
+      <EntityTypeMapping TypeName="ShowBisaoModel.Resposta">
+        <MappingFragment StoreEntitySet="Respostas">
+          <ScalarProperty Name="IdPergunta" ColumnName="IdPergunta" />
+          <ScalarProperty Name="IdAlternativa" ColumnName="IdAlternativa" />
+          <ScalarProperty Name="Rodada" ColumnName="Rodada" />
+          <ScalarProperty Name="Alternativa" ColumnName="Alternativa" />
+          <ScalarProperty Name="EhCorreta" ColumnName="EhCorreta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

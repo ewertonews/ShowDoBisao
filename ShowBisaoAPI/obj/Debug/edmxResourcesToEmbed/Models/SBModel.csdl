@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShowBisaoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Pergunta">
+    <Key>
+      <PropertyRef Name="IdPergunta" />
+      <PropertyRef Name="Rodada" />
+    </Key>
+    <Property Name="IdPergunta" Type="Int32" Nullable="false" />
+    <Property Name="Rodada" Type="Int32" Nullable="false" />
+    <Property Name="Pergunta1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Premio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Respostas" Relationship="Self.FK_Respostas_Pergunta" FromRole="Perguntas" ToRole="Respostas" />
+  </EntityType>
+  <EntityType Name="Resposta">
+    <Key>
+      <PropertyRef Name="IdAlternativa" />
+    </Key>
+    <Property Name="IdAlternativa" Type="Int32" Nullable="false" />
+    <Property Name="Rodada" Type="Int32" Nullable="false" />
+    <Property Name="Alternativa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EhCorreta" Type="Boolean" />
+    <Property Name="IdPergunta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pergunta" Relationship="Self.FK_Respostas_Pergunta" FromRole="Respostas" ToRole="Perguntas" />
+  </EntityType>
+  <Association Name="FK_Respostas_Pergunta">
+    <End Role="Perguntas" Type="Self.Pergunta" Multiplicity="1" />
+    <End Role="Respostas" Type="Self.Resposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perguntas">
+        <PropertyRef Name="IdPergunta" />
+        <PropertyRef Name="Rodada" />
+      </Principal>
+      <Dependent Role="Respostas">
+        <PropertyRef Name="IdPergunta" />
+        <PropertyRef Name="Rodada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShowBisaoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Perguntas" EntityType="Self.Pergunta" />
+    <EntitySet Name="Respostas" EntityType="Self.Resposta" />
+    <AssociationSet Name="FK_Respostas_Pergunta" Association="Self.FK_Respostas_Pergunta">
+      <End Role="Perguntas" EntitySet="Perguntas" />
+      <End Role="Respostas" EntitySet="Respostas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
